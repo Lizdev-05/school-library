@@ -6,4 +6,8 @@ class Person
         @name = name
         @age = age 
     end
+
+    def is_of_age
+      return  @age >= i8? true : false
+    end
 end
