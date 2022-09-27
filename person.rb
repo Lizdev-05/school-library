@@ -9,7 +9,7 @@ class Person
     end
 
     def of_age
-      return  @age >= i8? true : false
+      return  @age >= 18? true : false
     end
 
     private :of_age
