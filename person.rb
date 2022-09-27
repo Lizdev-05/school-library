@@ -15,6 +15,11 @@ class Person
     private :of_age
 
     def can_use_service
-        of_age? || @parent_permission == true
-
+        of_age || @parent_permission == true
+    end
 end
+
+p person_1 = Person.new('oyin', 22)
+p person_1.can_use_service
+
+
