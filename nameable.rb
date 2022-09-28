@@ -3,3 +3,4 @@ class Nameable
             raise NotImplementedError
         end
 end  
+
