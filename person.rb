@@ -25,4 +25,9 @@ class Person < Nameable
   def correct_name
     @name
   end
+
+  def rent_book(rental)
+    @rentals.push(rental)
+    rental.person = self
+  end
 end
