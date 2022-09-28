@@ -5,5 +5,10 @@ class Book
         @title = title
         @author = author
         @rentals = []
-    end    
+    end 
+    
+    def rent_book(rental)
+        @rentals.push(rental)
+        rental.book = self
+    end
 end
