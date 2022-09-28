@@ -1,5 +1,7 @@
 require './person'
 class Student < Person
+  attr_reader :classroom
+
   def initialize(classroom)
     super(age, name, parent_permission)
     @classroom = classroom
@@ -8,4 +10,6 @@ class Student < Person
   def play_hooky
     "¯\(ツ)/¯"
   end
+
+  
 end
