@@ -92,27 +92,39 @@ class App
     def create_rental
         if @books.size.zero?
             puts 'No book available'
-        elsif @people.size.zero?
-            puts 'No person available'
 
-        else 
-            puts 'Select a book by number'
-            @books.each_with_index { |index, book| puts '#{index}, Title: #{title}, Author: #{author}'} 
-            select_book = gets.chomp.to_i
+          elsif @people.size.zero?
+              puts 'No person available'
 
-            puts 'Select a person by number'
-            @people.each_with_index { |person, index| puts '#{index}, Name: #{name}, Age: #{age}'}
-        end
+         else 
+              puts 'Select a book by number'
+              @books.each_with_index { |index, book| puts '#{index}, Title: #{title}, Author: #{author}'} 
+              select_book = gets.chomp.to_i
 
-        select_person.chomp.to_i
+              puts 'Select a person by number'
+              @people.each_with_index { |person, index| puts '#{index}, Name: #{name}, Age: #{age}'}
+          end
 
-        puts 'Enter date [YYYY-MM-DD]'
-        select_date = gets.chomp.to_s
+          select_person.chomp.to_i
 
-        rental_item = Rental.new(date, @books[select_book], @people[select_person])
-        @rentals.push(rental_item)
+         puts 'Enter date [YYYY-MM-DD]'
+         select_date = gets.chomp.to_s
+
+         rental_item = Rental.new(date, @books[select_book], @people[select_person])
+         @rentals.push(rental_item)
        
-        puts 'Rental created successfully😊'
-    end   
+         puts 'Rental created successfully😊'
+      end  
+    end
+
+    def rental_list
+        puts 'Enter person id'
+        id = gets.chomp.to_i
+        @rentals.each |rent| do
+            if rent.person.id.to_i == id.to_i
+                puts "Date: #{rent.date}, Book: '#{rent.book.title}' by #{rent.book.author}"
+            end
+        end
+    end
 end
 
