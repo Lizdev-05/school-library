@@ -1,3 +1,4 @@
+require_relative 'app'
 class Main
     def self.home_page
         puts 'Welcome to School library App!'
@@ -16,8 +17,30 @@ class Main
   
       Integer(gets.chomp)
     end
-end  
 
-p Main.home_page
+    app = App.new
+
+    loop do
+       case home_page
+       when 1
+        app.book_list
+       when 2
+        app.person_list
+       when 3
+        app.create_person   
+       when 4
+        app.create_book
+       when 5
+        app.create_rental
+       when 6
+        app.rental_list
+       when 7
+        puts 'You made a good choice'
+        exit
+       else
+        puts 'You are out of range'
+       end
+    end
+end  
 
 
