@@ -34,8 +34,7 @@ class App
         else
             'You have entered an invalid input'
         end
-
-        
+        puts 'Person created successfully'
     end
 end
 
