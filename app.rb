@@ -34,7 +34,22 @@ class App
         else
             'You have entered an invalid input'
         end
-        puts 'Person created successfully'
+        puts 'Person created successfully 😊'
+    end
+
+    def create_teacher
+        print "teacher's name: "
+        name = gets.chomp
+
+        print "teacher's age: "
+        age = gets.chomp
+
+        print "teacher's specialization: "
+        specialization = gets.chomp
+
+        teacher = Teacher.new(name, age, specialization, parent_permission: true)
+        puts 'Teacher created successfully 😊'
+        @people.push(teacher)
     end
 end
 
