@@ -14,12 +14,12 @@ class App
 
   def book_list
     puts 'No book!' if @books.empty?
-    @books.each { |_book| puts "Title: #{book.title}, Author: #{book.author}" }
+    @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
   end
 
   def person_list
     puts 'No person!' if @people.empty?
-    @people.each { |_person| puts "[#{person.class}], Name: #{person.name}, Age: #{person.age}, ID: #{person.id}" }
+    @people.each { |person| puts "[#{person.class}], Name: #{person.name}, Age: #{person.age}, Id: #{person.id}" }
   end
 
   def create_person
@@ -34,40 +34,40 @@ class App
     else
       'You have entered an invalid input'
     end
-    puts 'Person created successfully 😊'
+    puts 'Person created successfully😊'
   end
 
   def create_teacher
-    print "teacher's name: "
-    name = gets.chomp
+    print "teacher's specialization: "
+    specialization = gets.chomp
 
     print "teacher's age: "
     age = gets.chomp
 
-    print "teacher's specialization: "
-    specialization = gets.chomp
+    print "teacher's name: "
+    name = gets.chomp
 
-    teacher = Teacher.new(name, age, specialization, parent_permission: true)
+    teacher = Teacher.new(specialization, age, name, parent_permission: true)
     puts 'Teacher created successfully 😊'
     @people.push(teacher)
   end
 
   def create_student
-    print "students's name: "
-    name = gets.chomp
-
     print "students's age: "
     age = gets.chomp
 
-    print 'has parent permission? [Y/N]'
+    print "students's name: "
+    name = gets.chomp
+
+    print 'has parent permission? [Y/N]: '
     parent_permission = gets.chomp.upcase
 
     case parent_permission
     when 'N'
-      student = Student.new(name, age, parent_permission: false)
+      student = Student.new(nil, age, name, parent_permission: false)
       @people.push(student)
     when 'Y'
-      student = Student.new(name, age, parent_permission: true)
+      student = Student.new(nil, age, name, parent_permission: true)
       @people.push(student)
     else
       'You have entered an invalid input'
@@ -77,10 +77,10 @@ class App
   end
 
   def create_book
-    print "book's title"
+    print "book's title: "
     title = gets.chomp
 
-    print "book's author"
+    print "book's author: "
     author = gets.chomp
 
     book = Book.new(title, author)
@@ -98,29 +98,34 @@ class App
 
     else
       puts 'Select a book by number'
-      @books.each_with_index { |_index, _book| puts "#{index}, Title: #{title}, Author: #{author}" }
-      select_book = gets.chomp.to_i
+      @books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
+      selected_book = gets.chomp.to_i
 
       puts 'Select a person by number'
-      @people.each_with_index { |_person, _index| puts "#{index}, Name: #{name}, Age: #{age}" }
+      @people.each_with_index do |person, index|
+        puts "#{index}) Name: #{person.name} Age: #{person.age} Id: #{person.id}"
+      end
+
+      selected_person = gets.chomp.to_i
+
+      puts 'Enter date [YYYY-MM-DD]'
+      selected_date = gets.chomp.to_s
+
+      rental_item = Rental.new(selected_date, @people[selected_person], @books[selected_book])
+      @rentals.push(rental_item)
+
+      puts 'Rental created successfully😊'
     end
-
-    select_person.chomp.to_i
-
-    puts 'Enter date [YYYY-MM-DD]'
-    select_date = gets.chomp.to_s
-
-    rental_item = Rental.new(select_date, @books[select_book], @people[select_person])
-    @rentals.push(rental_item)
-
-    puts 'Rental created successfully😊'
   end
 
   def rental_list
     puts 'Enter person id'
     id = gets.chomp.to_i
-    @rentals.each do |rent|
-      puts "Date: #{rent.date}, Book: '#{rent.book.title}' by #{rent.book.author}" if rent.person.id.to_i == id.to_i
+    @rentals.each do |rental|
+      if rental.person.id.to_i == id.to_i
+        puts "Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author}"
+
+      end
     end
   end
 end
