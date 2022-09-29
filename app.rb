@@ -73,7 +73,7 @@ class App
            'You have entered an invalid input' 
         end
 
-       
+        puts 'Student created successfully 😊'
     end
 end
 
