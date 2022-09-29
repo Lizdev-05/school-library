@@ -1,0 +1,3 @@
+def shout
+  '-------'
+end
