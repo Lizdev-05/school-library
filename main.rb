@@ -1,6 +1,7 @@
 class Main
     def self.home_page
-      puts 'Please enter a number: '
+        puts 'Welcome to School library App!'
+         puts 'Please enter a number: '
   
       @content = {
         '1' => 'List all books',
@@ -15,5 +16,8 @@ class Main
   
       Integer(gets.chomp)
     end
+end  
+
+p Main.home_page
 
 
