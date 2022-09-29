@@ -1,6 +1,6 @@
 puts 'Welcome to School Library App!'
 puts
-def display_list
+def display_lists
   puts 'Welcome to School library App!'
   puts "
       Choose an option by entering a number:
