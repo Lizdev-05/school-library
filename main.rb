@@ -35,7 +35,7 @@ class Main
     when 6
       app.rental_list
     when 7
-      puts 'You made a good choice'
+      puts 'Thank you for using this error'
       exit
     else
       puts 'You are out of range'
