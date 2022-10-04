@@ -53,13 +53,13 @@ class Student < Person
     end
   end
 
-#   def self.load_students
-#     if File.exist?('students.json')
-#       students_file = File.read('students.json')
-#       students = JSON.parse(students_file)
-#       students.each do |student|
-#         new(student['age'], student['name'])
-#       end
-#     end
-#   end
-# end
+  def self.load_students
+    if File.exist?('students.json')
+      students_file = File.read('students.json')
+      students = JSON.parse(students_file)
+      students.each do |student|
+        new(student['age'], student['name'])
+      end
+    end
+  end
+end
