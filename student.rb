@@ -3,7 +3,7 @@ require_relative 'person'
 class Student < Person
   attr_reader :classroom
 
-  def initialize(classroom, age, name = 'Unknown', parent_permission = true)
+  def initialize(classroom, age, name = 'Unknown', parent_permission: true)
     super(age, name, parent_permission)
     @classroom = classroom
   end
@@ -54,12 +54,12 @@ class Student < Person
   end
 
   def self.load_students
-    if File.exist?('students.json')
-      students_file = File.read('students.json')
-      students = JSON.parse(students_file)
-      students.each do |student|
-        new(student['age'], student['name'])
-      end
+    return unless File.exist?('students.json')
+
+    students_file = File.read('students.json')
+    students = JSON.parse(students_file)
+    students.each do |student|
+      new(student['age'], student['name'])
     end
   end
 end

@@ -65,10 +65,9 @@ class Rental
   end
 
   def self.load_rentals
-    if File.exist?('rentals.json')
-      rentals_file = File.read('rentals.json')
-      JSON.parse(rentals_file)
+    return unless File.exist?('rentals.json')
 
-    end
+    rentals_file = File.read('rentals.json')
+    JSON.parse(rentals_file)
   end
 end

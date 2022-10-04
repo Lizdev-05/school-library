@@ -3,7 +3,7 @@ require_relative 'student'
 class Teacher < Person
   attr_accessor :specialization
 
-  def initialize(specialization, age, name = 'Unknown', parent_permission = true)
+  def initialize(specialization, age, name = 'Unknown', parent_permission: true)
     super(age, name, parent_permission)
     @specialization = specialization
   end
@@ -50,12 +50,12 @@ class Teacher < Person
   end
 
   def self.load_teachers
-    if File.exist?('teachers.json')
-      teachers_file = File.read('teachers.json')
-      teachers = JSON.parse(teachers_file)
-      teachers.each do |teacher|
-        new(teacher['age'], teacher['name'], teacher['specialization'])
-      end
+    return unless File.exist?('teachers.json')
+
+    teachers_file = File.read('teachers.json')
+    teachers = JSON.parse(teachers_file)
+    teachers.each do |teacher|
+      new(teacher['age'], teacher['name'], teacher['specialization'])
     end
   end
 end
