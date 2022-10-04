@@ -40,34 +40,34 @@ class Book
     book.save
   end
 
-  # def self.select_book_for_renting
-  #   puts 'Select a book from the following list by number'
-  #   if all.empty?
-  #     puts
-  #     puts 'No books available'
-  #     return
-  #   end
-  #   puts all
-  #   book_idx = gets.chomp.to_i
+  def self.select_book_for_renting
+    puts 'Select a book from the following list by number'
+    if all.empty?
+      puts
+      puts 'No books available'
+      return
+    end
+    puts all
+    book_idx = gets.chomp.to_i
 
-  #   if book_idx > all.length || book_idx.negative?
-  #     puts 'Invalid book number'
-  #     return
-  #   end
-  #   book_idx
-  # end
+    if book_idx > all.length || book_idx.negative?
+      puts 'Invalid book number'
+      return
+    end
+    book_idx
+  end
 
-  # def save
-  #   if File.exist?('books.json')
-  #     books_file = File.read('books.json')
-  #     books = JSON.parse(books_file)
-  #     books << { title: title, author: author }
+  def save
+    if File.exist?('books.json')
+      books_file = File.read('books.json')
+      books = JSON.parse(books_file)
+      books << { title: title, author: author }
 
-  #     File.write('books.json', JSON.pretty_generate(books))
-  #   else
-  #     File.write('books.json', JSON.pretty_generate([{ title: title, author: author }]))
-  #   end
-  # end
+      File.write('books.json', JSON.pretty_generate(books))
+    else
+      File.write('books.json', JSON.pretty_generate([{ title: title, author: author }]))
+    end
+  end
 
   # def self.load_books
   #   if File.exist?('books.json')
