@@ -41,17 +41,17 @@ class Student < Person
     student.save
   end
 
-#   def save
-#     if File.exist?('students.json')
-#       students_file = File.read('students.json')
-#       students = JSON.parse(students_file)
-#       students << { age: age, name: name }
+  def save
+    if File.exist?('students.json')
+      students_file = File.read('students.json')
+      students = JSON.parse(students_file)
+      students << { age: age, name: name }
 
-#       File.write('students.json', JSON.pretty_generate(students))
-#     else
-#       File.write('students.json', JSON.pretty_generate([{ age: age, name: name }]))
-#     end
-#   end
+      File.write('students.json', JSON.pretty_generate(students))
+    else
+      File.write('students.json', JSON.pretty_generate([{ age: age, name: name }]))
+    end
+  end
 
 #   def self.load_students
 #     if File.exist?('students.json')
