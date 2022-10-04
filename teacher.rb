@@ -49,13 +49,13 @@ class Teacher < Person
     end
   end
 
-  # def self.load_teachers
-  #   if File.exist?('teachers.json')
-  #     teachers_file = File.read('teachers.json')
-  #     teachers = JSON.parse(teachers_file)
-  #     teachers.each do |teacher|
-  #       new(teacher['age'], teacher['name'], teacher['specialization'])
-  #     end
-  #   end
+  def self.load_teachers
+    if File.exist?('teachers.json')
+      teachers_file = File.read('teachers.json')
+      teachers = JSON.parse(teachers_file)
+      teachers.each do |teacher|
+        new(teacher['age'], teacher['name'], teacher['specialization'])
+      end
+    end
   end
 end
