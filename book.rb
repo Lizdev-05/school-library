@@ -69,13 +69,13 @@ class Book
     end
   end
 
-  # def self.load_books
-  #   if File.exist?('books.json')
-  #     books_file = File.read('books.json')
-  #     books = JSON.parse(books_file)
-  #     books.each do |book|
-  #       new(book['title'], book['author'])
-  #     end
-  #   end
-  # end
+  def self.load_books
+    if File.exist?('books.json')
+      books_file = File.read('books.json')
+      books = JSON.parse(books_file)
+      books.each do |book|
+        new(book['title'], book['author'])
+      end
+    end
+  end
 end
