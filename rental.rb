@@ -14,61 +14,61 @@ class Rental
     person.rentals << self
   end
 
-#   def self.all
-#     ObjectSpace.each_object(self).to_a
-#   end
+  def self.all
+    ObjectSpace.each_object(self).to_a
+  end
 
-#   def to_s
-#     "Date: #{date}, Book \"#{book.title}\" by #{book.author}, Rented to: #{person.name}"
-#   end
+  def to_s
+    "Date: #{date}, Book \"#{book.title}\" by #{book.author}, Rented to: #{person.name}"
+  end
 
-#   def self.create_rental
-#     puts
-#     book_class = Book.select_book_for_renting
-#     puts
-#     person_class = Person.select_person_to_rent
-#     puts
-#     puts 'Date:'
-#     date = gets.chomp
+  def self.create_rental
+    puts
+    book_class = Book.select_book_for_renting
+    puts
+    person_class = Person.select_person_to_rent
+    puts
+    puts 'Date:'
+    date = gets.chomp
 
-#     rental = new(date, Book.all[book_class], Person.all[person_class])
+    rental = new(date, Book.all[book_class], Person.all[person_class])
 
-#     puts
-#     puts 'Rental created successfully'
-#     puts rental
-#     rental.save
-#   end
+    puts
+    puts 'Rental created successfully'
+    puts rental
+    rental.save
+  end
 
-#   def self.list_rentals_by_person_id
-#     puts 'ID of person:'
-#     id = gets.chomp.to_i
+  def self.list_rentals_by_person_id
+    puts 'ID of person:'
+    id = gets.chomp.to_i
 
-#     rentals = Rental.load_rentals
-#     person_rental = rentals.find { |rental| rental['id'].to_i == id }
+    rentals = Rental.load_rentals
+    person_rental = rentals.find { |rental| rental['id'].to_i == id }
 
-#     puts
-#     puts 'Rentals:'
-#     puts "date: #{person_rental['date']} book: #{person_rental['book']} rented by: #{person_rental['name']}"
-#   end
+    puts
+    puts 'Rentals:'
+    puts "date: #{person_rental['date']} book: #{person_rental['book']} rented by: #{person_rental['name']}"
+  end
 
-#   def save
-#     if File.exist?('rentals.json')
-#       rentals_file = File.read('rentals.json')
-#       rentals = JSON.parse(rentals_file)
-#       rentals << { date: date, book: book.title, id: person.id, name: person.name }
+  def save
+    if File.exist?('rentals.json')
+      rentals_file = File.read('rentals.json')
+      rentals = JSON.parse(rentals_file)
+      rentals << { date: date, book: book.title, id: person.id, name: person.name }
 
-#       File.write('rentals.json', JSON.pretty_generate(rentals))
-#     else
-#       File.write('rentals.json', JSON.pretty_generate([{ date: date, book: book.title, id: person.id,
-#                                                          name: person.name }]))
-#     end
-#   end
+      File.write('rentals.json', JSON.pretty_generate(rentals))
+    else
+      File.write('rentals.json', JSON.pretty_generate([{ date: date, book: book.title, id: person.id,
+                                                         name: person.name }]))
+    end
+  end
 
-#   def self.load_rentals
-#     if File.exist?('rentals.json')
-#       rentals_file = File.read('rentals.json')
-#       JSON.parse(rentals_file)
+  def self.load_rentals
+    if File.exist?('rentals.json')
+      rentals_file = File.read('rentals.json')
+      JSON.parse(rentals_file)
 
-#     end
-#   end
-# end
+    end
+  end
+end
