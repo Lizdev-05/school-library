@@ -17,5 +17,9 @@ describe Book do
         end
     end
     
-    
+    describe "#author" do
+        it "returns the correct author" do
+        expect(@book.author).to eql "Author"
+        end
+    end
 end
