@@ -11,5 +11,11 @@ describe Student do
             expect(@student).to be_an_instance_of(Student)
         end
     
-      
+        it 'Should return the correct name' do
+            expect(@student.name).to eq('John')
+        end
+    
+       
+    end
+    
     end
