@@ -15,6 +15,10 @@ describe Student do
             expect(@student.name).to eq('John')
         end
     
+        it 'Should return the correct age' do
+            expect(@student.age).to eq(21)
+        end
+    
        
     end
     
