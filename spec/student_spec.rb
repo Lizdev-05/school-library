@@ -19,7 +19,10 @@ describe Student do
             expect(@student.age).to eq(21)
         end
     
-       
+        it 'Should return the correct permission' do
+            expect(@student.parent_permission).to eq(true)
+        end
+        end
     end
     
     end
